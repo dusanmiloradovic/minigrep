@@ -1,18 +1,17 @@
+use std::fs;
 use std::path::Path;
 use std::vec::Vec;
-use std::fs;
 
 pub struct Directory {
     files: Vec<String>,
-    child_directories: Vec<Box<Directory>>,
-    size: u64,
-    directory_name: String,
+    pub child_directories: Vec<Box<Directory>>,
+    pub(crate) size: u64,
+    pub(crate) directory_name: String,
 }
 
 pub fn browse_dir(directory: &Path) -> Option<Directory> {
     let d = fs::read_dir(directory);
     if let Ok(rez) = d {
-
         let mut sum_size: u64 = 0;
         let mut child_directories: Vec<Box<Directory>> = Vec::new();
         let mut child_files: Vec<String> = Vec::new();
@@ -26,7 +25,6 @@ pub fn browse_dir(directory: &Path) -> Option<Directory> {
             // println!("{:?}", f);
             if let Ok(_f) = f {
                 let f_path = _f.path();
-
 
                 if let Ok(file_type) = _f.file_type() {
                     if file_type.is_dir() {
@@ -50,8 +48,13 @@ pub fn browse_dir(directory: &Path) -> Option<Directory> {
                 }
             }
         });
-        let h = sum_size / (1024 * 1024);
-        Some(Directory { size: sum_size, directory_name, files: child_files, child_directories })
+
+        Some(Directory {
+            size: sum_size,
+            directory_name,
+            files: child_files,
+            child_directories,
+        })
     } else {
         None
     }
