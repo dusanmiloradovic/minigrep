@@ -8,12 +8,23 @@ mod dir_printer;
 
 use dir_browser::browse_dir;
 use dir_printer::format_directory;
+use dir_printer::format_sub_directory;
 
 fn main() {
-    let p = Path::new(".");
+    let args: Vec<String> = env::args().collect();
+    let root_dir = &args[1];
+
+    let p = Path::new(root_dir);
     let dir = browse_dir(p);
-    if let Some(dd) = dir {
-        println!("{}", format_directory(&dd));
+    if (args.len() > 2) {
+        let hier = &args[2];
+        if let Some(dd) = dir {
+            println!("{}", format_sub_directory(&dd, hier));
+        }
+    } else {
+        if let Some(dd) = dir {
+            println!("{}", format_directory(&dd));
+        }
     }
 }
 

@@ -28,3 +28,24 @@ pub fn format_directory(directory: &Directory) -> String {
     );
     ret.to_owned()
 }
+
+pub fn format_sub_directory(directory: &Directory, path: &str) -> String {
+    //the idea is to check the sizes of arbitary subdirectory, the path is
+    // subdir1/subdir2/....
+    let mut ret: String = String::new();
+    let dirs: Vec<&str> = path.split("/").collect();
+    let mut curr_dir: &Directory = directory;
+    for d in dirs {
+        let filtered: Vec<&Box<Directory>> = curr_dir
+            .child_directories
+            .iter()
+            .filter(|dr| dr.directory_name == d)
+            .collect();
+        if filtered.is_empty() {
+            return "error".to_string();
+        } else {
+            curr_dir = &(*(filtered[0]));
+        }
+    }
+    format_directory(curr_dir)
+}
