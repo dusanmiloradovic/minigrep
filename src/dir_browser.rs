@@ -1,12 +1,13 @@
 use bincode::{deserialize_from, serialize_into, Error};
 use dirs::cache_dir;
+use dunce::canonicalize;
 use serde::{Deserialize, Serialize};
 use std::fs;
+use std::fs::create_dir;
 use std::fs::File;
-use std::fs::{canonicalize, create_dir};
 use std::io::{BufReader, BufWriter};
-use std::path::Path;
 use std::path::MAIN_SEPARATOR;
+use std::path::{Path, PathBuf};
 use std::vec::Vec;
 
 #[derive(Serialize, Deserialize)]
@@ -17,7 +18,7 @@ pub struct Directory {
     pub(crate) directory_name: String,
 }
 
-fn get_cached_dir(directory: &Path) -> &Path {
+fn get_cached_dir(directory: &Path) -> PathBuf {
     let path_buf = cache_dir().unwrap();
     let cache_path = path_buf.as_path();
     let buf = cache_path.join("minigrep");
@@ -25,6 +26,10 @@ fn get_cached_dir(directory: &Path) -> &Path {
     if !minigrep_path.exists() {
         create_dir(minigrep_path);
     }
+    println!(
+        "!!!!*******************************{}",
+        String::from(canonicalize(directory).unwrap().to_string_lossy()),
+    );
     let root_p = &canonicalize(directory)
         .unwrap()
         .as_path()
@@ -32,28 +37,30 @@ fn get_cached_dir(directory: &Path) -> &Path {
         .unwrap()
         .replace(MAIN_SEPARATOR, "##");
     let buf1 = minigrep_path.join(root_p);
-    let cached_dir_path = buf1.as_path();
-    cached_dir_path
+    buf1
 }
 
 fn read_from_cache(directory: &Path) -> Option<Directory> {
-    let cached_dir_path = get_cached_dir(directory);
+    let cached_dir = get_cached_dir(directory);
+    let cached_dir_path = cached_dir.as_path();
     if cached_dir_path.exists() {
         let _f = File::open(cached_dir_path);
-        if let Ok(f) = _f {
-            let r = BufReader::new(f);
-            let p: Result<Directory, Error> = deserialize_from(r);
-            return match p {
-                Ok(d) => Some(d),
-                Err(e) => {
-                    println!("Error deserializing {}", e);
-                    None
-                }
-            };
-        } else {
-            let Err(err) = _f;
-            println!("Error when reading {}", err);
-            None
+        match _f {
+            Ok(f) => {
+                let r = BufReader::new(f);
+                let p: Result<Directory, Error> = deserialize_from(r);
+                return match p {
+                    Ok(d) => Some(d),
+                    Err(e) => {
+                        println!("Error deserializing {}", e);
+                        None
+                    }
+                };
+            }
+            Err(err) => {
+                println!("Error when reading {}", err);
+                None
+            }
         }
     } else {
         None
@@ -61,14 +68,23 @@ fn read_from_cache(directory: &Path) -> Option<Directory> {
 }
 
 fn write_to_cache(directory_path: &Path, directory: &Option<Directory>) {
-    let cached_dir_path = get_cached_dir(directory_path);
+    let cached_dir = get_cached_dir(directory_path);
+    let cached_dir_path = cached_dir.as_path();
+    println!(
+        "Creating the cache file {}",
+        String::from(cached_dir_path.to_string_lossy())
+    );
     let _f = File::create(cached_dir_path);
-    if let Ok(f) = _f {
-        let bw = BufWriter::new(f);
-        serialize_into(bw, &cached_dir_path);
-    } else {
-        let Err(err) = _f;
-        println!("Problem writing to cache {}", err);
+    match _f {
+        Ok(f) => {
+            let bw = BufWriter::new(f);
+            if let Err(err) = serialize_into(bw, &directory) {
+                println!("Problem serializing to cache file {}", err);
+            }
+        }
+        Err(err) => {
+            println!("Problem writing to cache {}", err);
+        }
     }
 }
 

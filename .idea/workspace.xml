@@ -7,13 +7,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb02d88b-0dd1-409b-b26d-238da8f73ec1" name="Changes" comment="working no caching">
+    <list default="true" id="bb02d88b-0dd1-409b-b26d-238da8f73ec1" name="Changes" comment="almost working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dir_browser.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/dir_browser.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dir_printer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/dir_printer.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645007115751</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="almost working">
+      <created>1645093190556</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645093190556</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,7 +224,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="dir printer" />
     <MESSAGE value="working no caching" />
-    <option name="LAST_COMMIT_MESSAGE" value="working no caching" />
+    <MESSAGE value="almost working" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
