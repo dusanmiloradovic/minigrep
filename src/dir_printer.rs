@@ -20,7 +20,7 @@ pub fn format_directory(directory: &Directory) -> String {
         dirs = dirs + &c_d.directory_name;
         dirs.push_str("\n");
     }
-    let mut ret = format!(
+    let ret = format!(
         "{}:{}\nChild directories\n{}",
         directory.directory_name,
         format_size(directory.size),
@@ -32,7 +32,7 @@ pub fn format_directory(directory: &Directory) -> String {
 pub fn format_sub_directory(directory: &Directory, path: &str) -> String {
     //the idea is to check the sizes of arbitary subdirectory, the path is
     // subdir1/subdir2/....
-    let mut ret: String = String::new();
+
     let dirs: Vec<&str> = path.split("/").collect();
     let mut curr_dir: &Directory = directory;
     for d in dirs {
