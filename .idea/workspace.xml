@@ -7,12 +7,12 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb02d88b-0dd1-409b-b26d-238da8f73ec1" name="Changes" comment="almost working">
-      <change afterPath="$PROJECT_DIR$/##dusan" afterDir="false" />
+    <list default="true" id="bb02d88b-0dd1-409b-b26d-238da8f73ec1" name="Changes" comment="migrate to josn serializa">
+      <change afterPath="$PROJECT_DIR$/src/dir_struct.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dir_browser.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/dir_browser.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dir_printer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/dir_printer.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,7 @@
       <command value="cargo run" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Run minigrep">
+  <component name="RunManager" selected="Cargo.Test dir_struct::tests">
     <configuration name="Run minigrep" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package minigrep --bin minigrep" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -91,8 +91,8 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="clean" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="clean" />
+    <configuration name="Test dir_struct::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package minigrep --bin minigrep dir_struct::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -107,8 +107,24 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="install" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="install" />
+    <configuration name="Test dir_struct::tests::test_less" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package minigrep --bin minigrep dir_struct::tests::test_less -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="clean" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -141,17 +157,18 @@
     </configuration>
     <list>
       <item itemvalue="Cargo.Run minigrep" />
-      <item itemvalue="Cargo.install" />
       <item itemvalue="Cargo.clean" />
       <item itemvalue="Cargo.run" />
+      <item itemvalue="Cargo.Test dir_struct::tests" />
+      <item itemvalue="Cargo.Test dir_struct::tests::test_less" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test dir_struct::tests" />
+        <item itemvalue="Cargo.Test dir_struct::tests::test_less" />
         <item itemvalue="Cargo.Run minigrep" />
         <item itemvalue="Cargo.clean" />
         <item itemvalue="Cargo.run" />
-        <item itemvalue="Cargo.install" />
-        <item itemvalue="Cargo.Run minigrep" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645095627412</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="migrate to josn serializa">
+      <created>1645099619391</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645099619391</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -235,7 +259,8 @@
     <MESSAGE value="dir printer" />
     <MESSAGE value="working no caching" />
     <MESSAGE value="almost working" />
-    <option name="LAST_COMMIT_MESSAGE" value="almost working" />
+    <MESSAGE value="migrate to josn serializa" />
+    <option name="LAST_COMMIT_MESSAGE" value="migrate to josn serializa" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

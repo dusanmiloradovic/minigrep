@@ -1,9 +1,3 @@
-use bincode::{deserialize, deserialize_from, serialize, serialize_into};
-use dirs::cache_dir;
-use dunce::canonicalize;
-use serde::{Deserialize, Serialize};
-use serde_json::{from_str, to_string, Error};
-use std::fmt::Debug;
 use std::fs;
 use std::fs::create_dir;
 use std::fs::File;
@@ -12,13 +6,13 @@ use std::path::MAIN_SEPARATOR;
 use std::path::{Path, PathBuf};
 use std::vec::Vec;
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct Directory {
-    files: Vec<String>,
-    pub child_directories: Vec<Box<Directory>>,
-    pub(crate) size: u64,
-    pub(crate) directory_name: String,
-}
+use dirs::cache_dir;
+use dunce::canonicalize;
+use serde_json::{from_str, to_string, Error};
+
+use dir_struct::Directory;
+
+use crate::dir_struct;
 
 fn get_cached_dir(directory: &Path) -> PathBuf {
     let path_buf = cache_dir().unwrap();

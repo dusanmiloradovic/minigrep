@@ -1,11 +1,12 @@
-use crate::dir_browser;
-use dir_browser::Directory;
+use dir_struct::Directory;
+
+use crate::dir_struct;
 
 fn format_size(size: u64) -> String {
     if size < 10000 {
         return size.to_string();
     }
-    if size > 1000000 {
+    if size < 1000000 {
         let u_size = size / 1024;
         return format!("{} Kb", u_size.to_string());
     }
@@ -14,10 +15,15 @@ fn format_size(size: u64) -> String {
 }
 
 pub fn format_directory(directory: &Directory) -> String {
-    let dir_iter = directory.child_directories.iter();
+    let mut child_dirs: Vec<&Box<Directory>> = vec![];
+    for d in directory.child_directories.iter() {
+        child_dirs.push(d);
+    }
+    child_dirs.sort_by(|a, b| b.partial_cmp(a).unwrap());
+    let dir_iter = child_dirs.iter();
     let mut dirs: String = String::new();
     for c_d in dir_iter {
-        dirs = dirs + &c_d.directory_name;
+        dirs = dirs + &c_d.directory_name + "\t" + format_size(c_d.size).as_str();
         dirs.push_str("\n");
     }
     let ret = format!(

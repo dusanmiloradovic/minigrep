@@ -5,6 +5,7 @@ use std::vec::Vec;
 
 mod dir_browser;
 mod dir_printer;
+mod dir_struct;
 
 use dir_browser::browse_root_dir;
 use dir_printer::format_directory;
@@ -18,12 +19,12 @@ fn main() {
     let dir = browse_root_dir(p);
     if args.len() > 2 {
         let hier = &args[2];
-        if let Some(dd) = dir {
-            println!("{}", format_sub_directory(&dd, hier));
+        if let Some(mut dd) = dir {
+            println!("{}", format_sub_directory(&mut dd, hier));
         }
     } else {
-        if let Some(dd) = dir {
-            println!("{}", format_directory(&dd));
+        if let Some(mut dd) = dir {
+            println!("{}", format_directory(&mut dd));
         }
     }
 }
