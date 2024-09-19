@@ -8,11 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb02d88b-0dd1-409b-b26d-238da8f73ec1" name="Changes" comment="migrate to josn serializa">
-      <change afterPath="$PROJECT_DIR$/src/dir_struct.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dir_browser.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/dir_browser.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dir_printer.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/dir_printer.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +35,11 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Cargo.toml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/dir_browser.rs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main.rs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="qtwqjcmo" />
   </component>
@@ -54,14 +57,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="org.rust.disableDetachedFileInspectionC:/dusan/rusttest/minigrep/dir_browser.rs" value="true" />
-    <property name="settings.editor.selected.configurable" value="language.rust.rustfmt" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dusan\rusttest\minigrep\src" />
@@ -72,9 +75,10 @@
       <command value="cargo install" />
       <command value="cargo clean" />
       <command value="cargo run" />
+      <command value="cargo build" />
     </option>
   </component>
-  <component name="RunManager" selected="Cargo.Test dir_struct::tests">
+  <component name="RunManager">
     <configuration name="Run minigrep" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package minigrep --bin minigrep" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -83,6 +87,7 @@
       <option name="allFeatures" value="false" />
       <option name="emulateTerminal" value="false" />
       <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
       <envs />
       <option name="isRedirectInput" value="false" />
@@ -99,6 +104,7 @@
       <option name="allFeatures" value="false" />
       <option name="emulateTerminal" value="false" />
       <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
       <envs />
       <option name="isRedirectInput" value="false" />
@@ -115,6 +121,24 @@
       <option name="allFeatures" value="false" />
       <option name="emulateTerminal" value="false" />
       <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="build" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="build" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
       <envs />
       <option name="isRedirectInput" value="false" />
@@ -131,6 +155,7 @@
       <option name="allFeatures" value="false" />
       <option name="emulateTerminal" value="false" />
       <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
       <envs />
       <option name="isRedirectInput" value="false" />
@@ -139,44 +164,14 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="run" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="withSudo" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Cargo.Run minigrep" />
-      <item itemvalue="Cargo.clean" />
-      <item itemvalue="Cargo.run" />
-      <item itemvalue="Cargo.Test dir_struct::tests" />
-      <item itemvalue="Cargo.Test dir_struct::tests::test_less" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Cargo.Test dir_struct::tests" />
-        <item itemvalue="Cargo.Test dir_struct::tests::test_less" />
-        <item itemvalue="Cargo.Run minigrep" />
-        <item itemvalue="Cargo.clean" />
-        <item itemvalue="Cargo.run" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="RustProjectSettings">
-    <option name="runRustfmtOnSave" value="true" />
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
-    <option name="useRustfmt" value="true" />
     <option name="version" value="2" />
+  </component>
+  <component name="RustfmtProjectSettings">
+    <option name="runRustfmtOnSave" value="true" />
+    <option name="useRustfmt" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
